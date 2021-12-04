@@ -1,11 +1,8 @@
-import LoginPage from "./loginPage";
+import useAuth from "../../useAuth";
 
-const HomePage = () => {
-  return (
-    <div>
-      <LoginPage />
-    </div>
-  );
+const HomePage = ({ code }) => {
+  const acccessToken = useAuth(code);
+  return <div>{code}</div>;
 };
 
 export default HomePage;

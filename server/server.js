@@ -1,12 +1,16 @@
 const express = require("express");
 const spotifyWeb = require("spotify-web-api-node");
+const cors = require("cors");
+const bodyParser = require("body-parser");
 
 const app = express();
-// const PORT = 8000;
+app.use(cors());
+app.use(bodyParser.json());
+const PORT = 8000;
 
-// app.listen(`${PORT}`, () => {
-//   console.log("listening on port: " + PORT);
-// });
+app.listen(`${PORT}`, () => {
+  console.log("listening on port: " + PORT);
+});
 
 // app.get("/", (req, res) => {
 //   res.send("hello world");
@@ -30,7 +34,8 @@ app.post("/login", (req, res) => {
         expiresIn: data.body.expires_in,
       });
     })
-    .catch(() => {
+    .catch((err) => {
+      console.error(err);
       res.sendStatus(400);
     });
 });
