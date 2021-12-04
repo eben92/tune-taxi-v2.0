@@ -6,3 +6,9 @@
   background: rgb(49, 151, 49);
   transition: all 0.3s linear;
 }
+
+@media (min-width: 768px) {
+  body {
+    display: none;
+  }
+}
