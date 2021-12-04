@@ -12,10 +12,38 @@ app.listen(`${PORT}`, () => {
   console.log("listening on port: " + PORT);
 });
 
-// app.get("/", (req, res) => {
-//   res.send("hello world");
-// });
+// refresh 👇👇
+app.post("/refresh", (req, res) => {
+  const refreshToken = req.body.refreshToken;
+  console.log("hi");
 
+  const spotifyApi = new spotifyWeb({
+    redirectUri: "http://localhost:3000",
+    clientId: "209833dcd53c4ec390e7766380414431",
+    clientSecret: "58225232336e49efbd922a36adf514cb",
+    refreshToken,
+  });
+
+  spotifyApi
+    .refreshAccessToken()
+    .then((data) => {
+      console.log(data.body);
+      console.log("the accessToken has been refreshed");
+
+      res.json({
+        accessToken: data.body.accessToken,
+        expiresIn: data.body.expiresIn,
+      });
+
+      spotifyApi.setAccessToken(data.body["access_token"]);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(400);
+    });
+});
+
+// login 👇👇
 app.post("/login", (req, res) => {
   const code = req.body.code;
 
