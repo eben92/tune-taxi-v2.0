@@ -1,0 +1,19 @@
+.cards-container {
+  height: 450px;
+  width: 100%;
+  overflow-y: scroll !important;
+}
+
+.search-cards {
+  width: 150px;
+  height: 150px;
+  margin: 10px;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* ::-webkit-scrollbar-thumb {
+  color: red;
+} */

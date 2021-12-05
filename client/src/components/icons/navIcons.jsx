@@ -6,7 +6,7 @@ import "./nav.css";
 
 const NavIcons = () => {
   return (
-    <div className='navbar-container flex justify-around rounded-lg p-3 bg-gray-100 text-dark'>
+    <div className='navbar-container flex justify-around rounded-lg p-3 bg-gray-300 text-dark'>
       <Link to='/search' className='nav-hover flex flex-col items-center'>
         <BiSearch className='icon-size' />
         <p className='text-size mt-2'>Search</p>

@@ -1,0 +1,29 @@
+.search-page-container {
+  margin: 20px;
+}
+
+.search-title {
+  margin-top: 50px;
+  /* margin-left: 20px; */
+  font-weight: 700;
+  /* color: #fff; */
+  font-size: 2rem;
+}
+.search-Bar-container {
+  margin-top: 10px;
+  margin: 10px 0px 20px 0px;
+}
+
+.search-icon {
+  font-size: 20px;
+  color: rgb(141, 139, 139);
+}
+
+.search-input {
+  border: none;
+  background: none;
+  outline: none;
+  margin-left: 10px;
+  width: 100%;
+  font-size: 17px;
+}

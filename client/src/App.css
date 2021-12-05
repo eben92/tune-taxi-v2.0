@@ -9,6 +9,7 @@
 
 body {
   background: rgb(26, 38, 54);
+  overflow: hidden;
 }
 
 /* @media (min-width: 768px) {
