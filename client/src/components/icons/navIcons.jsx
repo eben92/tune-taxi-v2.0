@@ -4,6 +4,14 @@ import { BiSearch } from "react-icons/bi";
 import { BsChatRightQuote } from "react-icons/bs";
 import "./nav.css";
 
+const code = new URLSearchParams(window.location.search).get("code");
+console.log("nav");
+console.log(code);
+console.log("nav");
+
+// Make the search page if it works with
+// make the redirect as a logout option
+
 const NavIcons = () => {
   return (
     <div className='navbar-container flex justify-around rounded-lg p-3 bg-gray-300 text-dark'>
@@ -11,7 +19,7 @@ const NavIcons = () => {
         <BiSearch className='icon-size' />
         <p className='text-size mt-2'>Search</p>
       </Link>
-      <Link to='/home' className='nav-hover'>
+      <Link to={`/home?code=${code}`} className='nav-hover'>
         <AiOutlineHome className='icon-size' />
         <p className='text-size mt-2'>Home</p>
       </Link>

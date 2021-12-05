@@ -2,6 +2,7 @@ import { useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import Cards from "../../components/cards/cards";
 import "./search.css";
+
 const Search = () => {
   const [searchValue, setSearchValue] = useState("");
   return (
@@ -12,8 +13,12 @@ const Search = () => {
         <input
           type='text'
           placeholder='Artists, Songs, Lyrics and More'
-          // value={searchValue}
+          value={searchValue}
           className='search-input text-gray-300'
+          onChange={(e) => {
+            setSearchValue(e.target.value);
+            console.log(searchValue);
+          }}
         />
       </label>
       <hr className=' border-gray-700 mb-4' />

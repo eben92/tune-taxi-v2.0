@@ -1,0 +1,11 @@
+.home_Page_Card_Container {
+  /* width: 100vh; */
+  /* height: 100vh; */
+  margin-top: 30px;
+}
+
+.home_page_card {
+  width: 450px;
+  height: 550px;
+  border-radius: 40px;
+}

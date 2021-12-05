@@ -23,7 +23,7 @@ const useAuth = (code) => {
         console.log(res.data);
 
         // this will remove the code from the url and return the homepage url
-        window.history.pushState({}, null, "/home");
+        // window.history.pushState({}, null, "/home");
       })
       .catch((err) => {
         // this will redirect the user back to the login page if there was an error
