@@ -7,8 +7,12 @@
   transition: all 0.3s linear;
 }
 
-@media (min-width: 768px) {
+body {
+  background: rgb(26, 38, 54);
+}
+
+/* @media (min-width: 768px) {
   body {
     display: none;
   }
-}
+} */

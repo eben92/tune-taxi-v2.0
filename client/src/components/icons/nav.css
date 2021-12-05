@@ -1,0 +1,18 @@
+.navbar-container {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  /* margin-bottom: 10px; */
+  margin: 0 10px 10px 10px;
+}
+.text-size {
+  font-size: 10px;
+}
+
+.icon-size {
+  font-size: 1.5rem;
+}
+
+.nav-hover:hover {
+  background: green;
+}

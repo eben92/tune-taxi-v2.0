@@ -15,13 +15,15 @@ const useAuth = (code) => {
         setAccessToken(res.data.acccessToken);
 
         // the refreshToken will help the user from logging in again every 1 hour
+        // setrefreshToken(res.data.refreshToken);
         setrefreshToken(res.data.refreshToken);
         setexpiresIn(res.data.expiresIn);
+        // setexpiresIn(61);
 
         console.log(res.data);
 
         // this will remove the code from the url and return the homepage url
-        window.history.pushState({}, null, "/");
+        window.history.pushState({}, null, "/home");
       })
       .catch((err) => {
         // this will redirect the user back to the login page if there was an error
@@ -42,6 +44,7 @@ const useAuth = (code) => {
         })
         .then((res) => {
           //  setrefreshToken(res.data.refreshToken);
+          // setexpiresIn(61);
           setexpiresIn(res.data.expiresIn);
           setAccessToken(res.data.acccessToken);
         })
