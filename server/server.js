@@ -2,6 +2,7 @@ const express = require("express");
 const spotifyWeb = require("spotify-web-api-node");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+require("dotenv").config();
 
 const app = express();
 app.use(cors());
@@ -19,8 +20,8 @@ app.post("/refresh", (req, res) => {
 
   const spotifyApi = new spotifyWeb({
     redirectUri: "http://localhost:3000/home",
-    clientId: "209833dcd53c4ec390e7766380414431",
-    clientSecret: "a1975bed6b7b46de85bab1e4188703b4",
+    clientId: process.env.clientId,
+    clientSecret: process.env.clientSecret,
     refreshToken,
   });
 
@@ -49,8 +50,8 @@ app.post("/login", (req, res) => {
 
   const spotifyApi = new spotifyWeb({
     redirectUri: "http://localhost:3000/home",
-    clientId: "209833dcd53c4ec390e7766380414431",
-    clientSecret: "a1975bed6b7b46de85bab1e4188703b4",
+    clientId: process.env.clientId,
+    clientSecret: process.env.clientSecret,
   });
 
   spotifyApi

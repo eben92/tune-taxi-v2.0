@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const useAuth = (code) => {
-  const [acccessToken, setAccessToken] = useState();
+  const [accessToken, setAccessToken] = useState();
   const [refreshToken, setrefreshToken] = useState();
   const [expiresIn, setexpiresIn] = useState();
 
@@ -12,7 +12,7 @@ const useAuth = (code) => {
         code,
       })
       .then((res) => {
-        setAccessToken(res.data.acccessToken);
+        setAccessToken(res.data.accessToken);
 
         // the refreshToken will help the user from logging in again every 1 hour
         // setrefreshToken(res.data.refreshToken);
@@ -20,7 +20,7 @@ const useAuth = (code) => {
         setexpiresIn(res.data.expiresIn);
         // setexpiresIn(61);
 
-        console.log(res.data);
+        console.log(res);
 
         // this will remove the code from the url and return the homepage url
         // window.history.pushState({}, null, "/home");
@@ -45,8 +45,9 @@ const useAuth = (code) => {
         .then((res) => {
           //  setrefreshToken(res.data.refreshToken);
           // setexpiresIn(61);
+          // console.log(res);
           setexpiresIn(res.data.expiresIn);
-          setAccessToken(res.data.acccessToken);
+          setAccessToken(res.data.accessToken);
         })
         .catch((err) => {
           window.location = "/";
@@ -59,7 +60,7 @@ const useAuth = (code) => {
 
   // this will allow us to call the spotify api (search for songs, play songs etc...)
   // but it will expire in 1 hour (meaning the user will have to login again) which sucks
-  return acccessToken;
+  return accessToken;
 };
 
 export default useAuth;
