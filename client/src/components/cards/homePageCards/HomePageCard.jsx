@@ -2,8 +2,8 @@ import "./homepagecard.css";
 
 const HomePageCard = () => {
   return (
-    <div className='home_Page_Card_Container flex justify-center items-center'>
-      <div className='home_page_card bg-white'></div>
+    <div className='home_Page_Card'>
+      <div className='home_page_card bg-white'>hello</div>
     </div>
   );
 };

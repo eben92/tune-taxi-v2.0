@@ -1,11 +1,25 @@
 .home_Page_Card_Container {
   /* width: 100vh; */
   /* height: 100vh; */
+  /* width: 100%; */
   margin-top: 30px;
+  margin: 0 50px;
+}
+
+.home_Page_Card {
+  width: 100%;
 }
 
 .home_page_card {
-  width: 450px;
-  height: 550px;
+  width: 100%;
+  /* margin: 0 100px; */
+  height: 150px;
   border-radius: 40px;
+  margin-bottom: 50px;
+}
+
+.tracklist_overflow {
+  height: 25vh;
+
+  overflow-y: scroll;
 }

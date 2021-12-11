@@ -6,17 +6,18 @@ import NavIcons from "../../components/icons/navIcons";
 import HomePageCard from "../../components/cards/homePageCards/HomePageCard";
 import Search from "../../routes/search/Search";
 import { Form } from "react-bootstrap";
-
+import TrackList from "./TrackList";
+import "../../components/cards/homePageCards/homepagecard.css";
 const spotifyApi = new spotifyWebApi({
   clientId: process.env.clientId,
 });
 
 const HomePage = ({ code }) => {
   const accessToken = useAuth(code);
-  console.log(accessToken);
+  // console.log(accessToken);
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
-
+  console.log(searchResult);
   useEffect(() => {
     if (accessToken) {
       spotifyApi.setAccessToken(accessToken);
@@ -27,23 +28,54 @@ const HomePage = ({ code }) => {
   }, [accessToken]);
 
   useEffect(() => {
-    if (search && accessToken) {
-      console.log("it has");
-      spotifyApi
-        .searchTracks(search)
-        .then((res) => {
-          console.log("data");
-          console.log(res);
-        })
-        .catch((err) => {
-          console.log(err);
-          console.log("Error");
-        });
-    } else {
-      console.log("no search or access token");
-      setSearchResult([]);
-      return;
-    }
+    if (!search) return setSearchResult([]);
+    if (!accessToken) return;
+    // if (search && accessToken) {
+    // console.log("it has");
+
+    // we need to cancel the request anytime the search result changes
+    let cancel = false;
+    spotifyApi
+      .searchTracks(search)
+      .then((res) => {
+        // console.log("data");
+        // console.log(res.body.tracks.items);
+        if (!cancel) return;
+        // mapping
+        setSearchResult(
+          res.body.tracks.items.map((track) => {
+            // gettting the smallest album/image
+
+            const smallestAlbumImage = track.album.images.reduce(
+              (smallest, image) => {
+                if (image.height < smallest.height) return image;
+                return smallest;
+              },
+              track.album.images[0]
+            );
+
+            return {
+              artist: track.artists[0].name,
+              title: track.name,
+              uri: track.uri,
+              albumUrl: smallestAlbumImage.url,
+            };
+          })
+        );
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log("Error");
+      });
+
+    return () => (cancel = true);
+    // } else {
+    // console.log("no search or access token");
+    // setSearchResult([]);
+    // return;
+    // }
+
+    // this means make reques and if a new request is made, we set the cancel to true
   }, [search, accessToken]);
 
   return (
@@ -65,8 +97,14 @@ const HomePage = ({ code }) => {
         <hr className=' border-gray-700 mb-4' />
         <div>{/* <Cards /> */}</div>
       </div>
-
-      <HomePageCard />
+      <div className='home_Page_Card_Container flex justify-center items-center flex-col'>
+        <HomePageCard />
+        <div className='tracklist_overflow'>
+          {searchResult.map((track) => (
+            <TrackList key={track.uri} songs={track} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

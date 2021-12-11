@@ -9,7 +9,7 @@ import NavIcons from "./components/icons/navIcons";
 // getting code from the uri tab
 // the code will help redirect the user to the homepage after logging in
 const code = new URLSearchParams(window.location.search).get("code");
-console.log(code);
+// console.log(code);
 function App() {
   return (
     <BrowserRouter>

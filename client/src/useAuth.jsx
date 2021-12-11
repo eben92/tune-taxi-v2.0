@@ -20,7 +20,7 @@ const useAuth = (code) => {
         setexpiresIn(res.data.expiresIn);
         // setexpiresIn(61);
 
-        console.log(res);
+        // console.log(res);
 
         // this will remove the code from the url and return the homepage url
         // window.history.pushState({}, null, "/home");

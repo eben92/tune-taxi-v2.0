@@ -22,7 +22,10 @@ const Search = ({ code }) => {
     if (!searchValue) return setSearchResult([]);
     if (!accessToken) return;
 
-    spotifyApi.searchTracks(searchValue).then((res) => console.log(res));
+    spotifyApi.searchTracks(searchValue).then((res) => {
+      // console.log("lol");
+      // console.log(res.body.tracks.items);
+    });
   }, [searchValue, accessToken]);
 
   return (
